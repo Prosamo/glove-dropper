@@ -39,9 +39,9 @@ class Title:
             state.set(Game())
         if pyxel.btnp(pyxel.KEY_H):
             state.set(Help())
-        if pyxel.btnp(pyxel.GAMEPAD_BUTTON_X):
+        if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_Y):
             state.set(Help())
-        if pyxel.btnp(pyxel.GAMEPAD_BUTTON_A):
+        if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
             state.set(Game())
     def draw(self):
         pyxel.cls(7)
@@ -55,7 +55,7 @@ class Title:
 
 class Help:
     def update(self):
-        if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+        if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
             state.set(Title())
     def draw(self):
         pyxel.cls(7)
@@ -77,13 +77,11 @@ class Result:
                 state.set(Game())
             else:
                 state.set(Event())
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            mouse_x, mouse_y = pyxel.mouse_x, pyxel.mouse_y
-            if 128 <= mouse_x <= 384 and 192 <= mouse_y <= 224:
-                if money < 10000 or watched:
-                    state.set(Game())
-                else:
-                    state.set(Event())
+        if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
+            if money < 10000 or watched:
+                state.set(Game())
+            else:
+                state.set(Event())
             
         if pyxel.btnp(pyxel.KEY_Q):
             state.set(Title())
@@ -109,7 +107,7 @@ class Event:
         if self.darkness < pyxel.height:
             self.darkness += self.speed
         else:
-            if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            if pyxel.btnp(pyxel.KEY_RETURN) or if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B)::
                 state.set(Title())
         
         
@@ -176,25 +174,9 @@ class Game:
             state.set(Title())
 
         # ジャンプの処理
-        if pyxel.btnp(pyxel.KEY_SPACE) and not self.is_jumping:
+        if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A) and not self.is_jumping:
             self.player_vy = -10
             self.is_jumping = True
-        #画面タッチ版
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            mouse_x, mouse_y = pyxel.mouse_x, pyxel.mouse_y
-            if self.space.pressed(mouse_x, mouse_y)and not self.is_jumping:
-                self.player_vy = -10
-                self.is_jumping = True
-            if self.glove_count > 0:
-                if self.d.pressed(mouse_x, mouse_y):
-                    self.gloves.append((self.player_x+4, self.player_y+8, 0, 0))
-                    self.glove_count -= 1
-                elif self.s.pressed(mouse_x, mouse_y):
-                    self.gloves.append((self.player_x+4, self.player_y+8, -4, -10))
-                    self.glove_count -= 1
-                elif self.f.pressed(mouse_x, mouse_y):
-                    self.gloves.append((self.player_x+4, self.player_y+8, 4, -10))
-                    self.glove_count -= 1
             
         # 重力の適用
         self.player_vy += self.g
@@ -207,15 +189,15 @@ class Game:
             
         if self.glove_count > 0:
             # 軍手を真下に投げる
-            if pyxel.btnp(pyxel.KEY_D):
+            if pyxel.btnp(pyxel.KEY_D) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_DOWN):
                 self.gloves.append((self.player_x+4, self.player_y+8, 0, 0))
                 self.glove_count -= 1
             # 軍手を左斜め上に投げる
-            if pyxel.btnp(pyxel.KEY_S):
+            if pyxel.btnp(pyxel.KEY_S) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_LEFT):
                 self.gloves.append((self.player_x+4, self.player_y+8, -4, -10)) # -4, -10 は軍手の速度
                 self.glove_count -= 1
             # 軍手を右斜め上に投げる
-            if pyxel.btnp(pyxel.KEY_F):
+            if pyxel.btnp(pyxel.KEY_F) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_RIGHT):
                 self.gloves.append((self.player_x+4, self.player_y+8, 4, -10))# 4, -10 は軍手の速度（斜め上
                 self.glove_count -= 1
             
