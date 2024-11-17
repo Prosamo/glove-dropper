@@ -107,7 +107,7 @@ class Event:
         if self.darkness < pyxel.height:
             self.darkness += self.speed
         else:
-            if pyxel.btnp(pyxel.KEY_RETURN) or if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B)::
+            if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
                 state.set(Title())
         
         
@@ -189,15 +189,15 @@ class Game:
             
         if self.glove_count > 0:
             # 軍手を真下に投げる
-            if pyxel.btnp(pyxel.KEY_D) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_DOWN):
+            if pyxel.btnp(pyxel.KEY_D) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
                 self.gloves.append((self.player_x+4, self.player_y+8, 0, 0))
                 self.glove_count -= 1
             # 軍手を左斜め上に投げる
-            if pyxel.btnp(pyxel.KEY_S) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_LEFT):
+            if pyxel.btnp(pyxel.KEY_S) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
                 self.gloves.append((self.player_x+4, self.player_y+8, -4, -10)) # -4, -10 は軍手の速度
                 self.glove_count -= 1
             # 軍手を右斜め上に投げる
-            if pyxel.btnp(pyxel.KEY_F) or pyxel.btnp(pyxel.GAMEPAD1_DPAD_RIGHT):
+            if pyxel.btnp(pyxel.KEY_F) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
                 self.gloves.append((self.player_x+4, self.player_y+8, 4, -10))# 4, -10 は軍手の速度（斜め上
                 self.glove_count -= 1
             
