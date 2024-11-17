@@ -42,7 +42,7 @@ class Title:
         #writer.draw(352, 16, 'バイトマニュアル', 16, 5)
         #writer.draw(32, 16, '軍手を落とすだけ！　手軽に高収入！', 16, pyxel.COLOR_BLACK)
         #writer.draw(32, 48, '超ホワイト！　時給最高3000円！', 16, pyxel.COLOR_BLACK)
-        if watched:
+        #if watched:
             #writer.draw(272, 160, '...そんなバイトはありません')
         #writer.draw(64, 96, '軍手落とし', 48, pyxel.COLOR_RED)
         #writer.draw(160, 208, '-PRESS ENTER TO START-', 16, pyxel.COLOR_BLACK)
