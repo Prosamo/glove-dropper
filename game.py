@@ -6,12 +6,6 @@ money = 0
 watched = False
 #writer = puf.Writer("ipa_gothic.ttf")
 
-def get_window_size():
-    user32 = ctypes.windll.user32
-    screen_width = user32.GetSystemMetrics(0)
-    screen_height = user32.GetSystemMetrics(1)
-    return screen_width, screen_height
-
 class Title:
     def update(self):
         if pyxel.btnp(pyxel.KEY_RETURN):
@@ -51,12 +45,7 @@ class Help:
 
 class Result:
     def update(self):
-        if pyxel.btnp(pyxel.KEY_RETURN):
-            if money < 10000 or watched:
-                state.set(Game())
-            else:
-                state.set(Event())
-        if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
+        if pyxel.btnp(pyxel.KEY_RETURN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
             if money < 10000 or watched:
                 state.set(Game())
             else:
