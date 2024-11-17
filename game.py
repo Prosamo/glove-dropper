@@ -1,7 +1,6 @@
 import pyxel
 #import PyxelUniversalFont as puf
 
-print(puf.__file__)
 score = 0
 money = 0
 watched = False
