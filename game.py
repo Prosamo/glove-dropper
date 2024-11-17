@@ -139,7 +139,11 @@ class Game:
             state.set(Title())
 
         # ジャンプの処理
-        if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A) and not self.is_jumping:
+        if pyxel.btnp(pyxel.KEY_SPACE) and not self.is_jumping:
+            self.player_vy = -10
+            self.is_jumping = True
+
+        if pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A) and not self.is_jumping:
             self.player_vy = -10
             self.is_jumping = True
             
