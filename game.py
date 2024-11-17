@@ -12,27 +12,6 @@ def get_window_size():
     screen_height = user32.GetSystemMetrics(1)
     return screen_width, screen_height
 
-
-class Button:
-    def __init__(self, x, y, w, h, color = 7, border_color = 0, font_color = 0, mark = ''):
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-        self.color = color
-        self.border_color = border_color
-        self.font_color = font_color
-        self.mark = mark
-    def draw(self):
-        pyxel.elli(self.x, self.y, self.w, self.h, self.color)
-        pyxel.ellib(self.x, self.y, self.w, self.h, self.border_color)
-        
- #       writer.draw(self.x + self.w//2 -8, self.y + self.h//2 -8, self.mark, 16, self.font_color)
-    def pressed(self, mouse_x, mouse_y):
-        if (self.x <= mouse_x <= self.x + self.w and self.y <= mouse_y <= self.y + self.h):
-            return True
-        return False
-
 class Title:
     def update(self):
         if pyxel.btnp(pyxel.KEY_RETURN):
@@ -143,10 +122,6 @@ class Game:
         self.last_time = pyxel.frame_count
         self.bg_x = 0
         self.bg2_x = 512
-        self.space = Button(32, 220, 64, 32, 8)
-        self.s = Button(368, 220, 32, 32, 5, 0, 7, 'Ｓ')
-        self.d = Button(408, 220, 32, 32, 5, 0, 7, 'Ｄ')
-        self.f = Button(448, 220, 32, 32, 5, 0, 7, 'Ｆ')
     
     def update(self):
         global score, money
@@ -264,9 +239,6 @@ class Game:
                 pyxel.blt(tx, ty, 0, 0, 16, 8, 8, 0)# coin
         pyxel.blt(self.player_x, self.player_y, 0, 8 + 16*frame, 0, 16, 16, 9)# Player
         self.space.draw()
-        self.s.draw()
-        self.d.draw()
-        self.f.draw()
 
 class State:
     def __init__(self, state):
