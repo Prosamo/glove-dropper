@@ -1,10 +1,17 @@
-import pyxel
+import pyxel, ctypes
 #import PyxelUniversalFont as puf
 
 score = 0
 money = 0
 watched = False
 #writer = puf.Writer("ipa_gothic.ttf")
+
+def get_window_size():
+    user32 = ctypes.windll.user32
+    screen_width = user32.GetSystemMetrics(0)
+    screen_height = user32.GetSystemMetrics(1)
+    return screen_width, screen_height
+
 
 class Button:
     def __init__(self, x, y, w, h, color = 7, border_color = 0, font_color = 0, mark = ''):
@@ -30,14 +37,12 @@ class Title:
     def update(self):
         if pyxel.btnp(pyxel.KEY_RETURN):
             state.set(Game())
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            mouse_x, mouse_y = pyxel.mouse_x, pyxel.mouse_y
-            if 320 <= mouse_x and mouse_y <= 48:
-                state.set(Help())
-            elif 128 <= mouse_x <= 384 and 192 <= mouse_y <= 224:
-                state.set(Game())
         if pyxel.btnp(pyxel.KEY_H):
             state.set(Help())
+        if pyxel.btnp(pyxel.GAMEPAD_BUTTON_X):
+            state.set(Help())
+        if pyxel.btnp(pyxel.GAMEPAD_BUTTON_A):
+            state.set(Game())
     def draw(self):
         pyxel.cls(7)
         #writer.draw(352, 16, 'バイトマニュアル', 16, 5)
@@ -291,7 +296,7 @@ class App:
         pyxel.init(512, 256, title="軍手落とし")
         pyxel.load('sample.pyxres')
         pyxel.run(self.update, self.draw)
-    
+        
     def update(self):
         state.state.update()
 
