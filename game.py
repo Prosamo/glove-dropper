@@ -1,5 +1,7 @@
 import pyxel
 #import PyxelUniversalFont as puf
+
+print(puf.__file__)
 score = 0
 money = 0
 watched = False
@@ -19,7 +21,7 @@ class Button:
         pyxel.elli(self.x, self.y, self.w, self.h, self.color)
         pyxel.ellib(self.x, self.y, self.w, self.h, self.border_color)
         
-        #writer.draw(self.x + self.w//2 -8, self.y + self.h//2 -8, self.mark, 16, self.font_color)
+ #       writer.draw(self.x + self.w//2 -8, self.y + self.h//2 -8, self.mark, 16, self.font_color)
     def pressed(self, mouse_x, mouse_y):
         if (self.x <= mouse_x <= self.x + self.w and self.y <= mouse_y <= self.y + self.h):
             return True
@@ -43,7 +45,7 @@ class Title:
         #writer.draw(32, 16, '軍手を落とすだけ！　手軽に高収入！', 16, pyxel.COLOR_BLACK)
         #writer.draw(32, 48, '超ホワイト！　時給最高3000円！', 16, pyxel.COLOR_BLACK)
         #if watched:
-            #writer.draw(272, 160, '...そんなバイトはありません')
+        #    writer.draw(272, 160, '...そんなバイトはありません')
         #writer.draw(64, 96, '軍手落とし', 48, pyxel.COLOR_RED)
         #writer.draw(160, 208, '-PRESS ENTER TO START-', 16, pyxel.COLOR_BLACK)
 
@@ -117,10 +119,10 @@ class Event:
             pyxel.rect(0, 0, pyxel.width, int(self.darkness), 0)
         #暗転が終わっていたら追加で文字を描画
         #if self.darkness >= pyxel.height:
-            #writer.draw(32, 32, 'BAD END...', 48, pyxel.COLOR_RED)
-            #writer.draw(16, 144, '逮捕されてしまった...', 16, pyxel.COLOR_WHITE)
-            #writer.draw(16, 160, 'あんな怪しいバイトに手を出していなければ...', 16, pyxel.COLOR_WHITE)
-            #writer.draw(160, 224, '-PRESS ENTER TO TITLE-', 16, pyxel.frame_count % 16)
+        #    writer.draw(32, 32, 'BAD END...', 48, pyxel.COLOR_RED)
+        #    writer.draw(16, 144, '逮捕されてしまった...', 16, pyxel.COLOR_WHITE)
+        #    writer.draw(16, 160, 'あんな怪しいバイトに手を出していなければ...', 16, pyxel.COLOR_WHITE)
+        #    writer.draw(160, 224, '-PRESS ENTER TO TITLE-', 16, pyxel.frame_count % 16)
             
 
 class Game:
