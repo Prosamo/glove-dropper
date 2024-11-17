@@ -116,7 +116,7 @@ class Event:
         if self.darkness:
             pyxel.rect(0, 0, pyxel.width, int(self.darkness), 0)
         #暗転が終わっていたら追加で文字を描画
-        if self.darkness >= pyxel.height:
+        #if self.darkness >= pyxel.height:
             #writer.draw(32, 32, 'BAD END...', 48, pyxel.COLOR_RED)
             #writer.draw(16, 144, '逮捕されてしまった...', 16, pyxel.COLOR_WHITE)
             #writer.draw(16, 160, 'あんな怪しいバイトに手を出していなければ...', 16, pyxel.COLOR_WHITE)
