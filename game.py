@@ -238,7 +238,6 @@ class Game:
                 pyxel.blt(tx, ty-8, 0, 0, 8, 8, 8, 0)#パラソル
                 pyxel.blt(tx, ty, 0, 0, 16, 8, 8, 0)# coin
         pyxel.blt(self.player_x, self.player_y, 0, 8 + 16*frame, 0, 16, 16, 9)# Player
-        self.space.draw()
 
 class State:
     def __init__(self, state):
