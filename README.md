@@ -1,2 +1,3 @@
 # glove-dropper
 軍手を落として時給3000円を目指すゲーム
+web版を作るにあたり、PyxelUniversalFontがimportできないため、スコア表示とタイトルとリザルトが死んでます。（現在調整中）
