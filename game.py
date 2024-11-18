@@ -117,7 +117,7 @@ class Game:
         global score, money
         #終了
         if self.glove_count <= 0 and not self.gloves:
-            money += score*100
+            money = min(money + score*100, 99900)
             state.set(Result())
             
         #コインを一定時間ごとに描画
